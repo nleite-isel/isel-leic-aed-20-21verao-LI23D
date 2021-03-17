@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="aula02.PowerLogarithmicTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-03-17T09:59:13" hostname="debian" time="0.035">
+  <properties/>
+  <testcase name="power_ExponentZero()" classname="aula02.PowerLogarithmicTest" time="0.029"/>
+  <testcase name="power_EvenExponent()" classname="aula02.PowerLogarithmicTest" time="0.001"/>
+  <testcase name="power_OddExponent()" classname="aula02.PowerLogarithmicTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
