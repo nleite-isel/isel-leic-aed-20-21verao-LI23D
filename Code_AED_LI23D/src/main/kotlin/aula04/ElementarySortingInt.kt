@@ -33,3 +33,27 @@ fun insertionSort2(a: IntArray, l: Int, r: Int) {
 
 }
 
+// Selection Sort
+fun selectionSort(a: IntArray, l: Int, r: Int) {
+    for (i in l until r) {
+        var min = i
+        for (j in i + 1..r)
+            if (less(a[j], a[min]))
+                min = j
+        exch(a, i, min)
+    }
+}
+
+// Bubble sort
+fun bubbleSort(a: IntArray, l: Int, r: Int) {
+    for (i in l until r) {
+        for (j in r downTo i + 1) {
+            lessExch(a, j, j - 1)
+        }
+    }
+}
+
+
+
+
+
