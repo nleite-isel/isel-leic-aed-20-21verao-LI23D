@@ -32,7 +32,8 @@ private fun selectionSort(a: IntArray, l: Int, r: Int) {
 
 private fun insertionSort1(a: IntArray, l: Int, r: Int) {
     for (i in l + 1..r) {
-        for (j in i downTo l + 1) lessExch(a, j, j - 1)
+        for (j in i downTo l + 1)
+            lessExch(a, j, j - 1)
     }
 }
 
@@ -71,7 +72,7 @@ private fun shuffle(a: IntArray, l: Int, r: Int) {
 }
 
 fun quicksort(a: IntArray, l: Int, r: Int) {
-    //shuffle(a, l, r); // OPCIONAL
+    shuffle(a, l, r); // OPCIONAL
     qsort(a, 0, a.size - 1)
 }
 
@@ -131,8 +132,8 @@ fun sort(a: IntArray, l: Int, r: Int) {
     // insertionSort1(a, l, r);
     //insertionSort2(a, l, r);
     // bubbleSort(a, l, r);
-    quicksort(a, l, r)
-//    nonRecursiveQuicksort(a, l, r);
+//    quicksort(a, l, r)
+    nonRecursiveQuicksort(a, l, r);
 }
 
 fun main(args: Array<String>) {
@@ -154,7 +155,9 @@ fun main(args: Array<String>) {
 
     // Teste2
     cnt = 0 // Colocar contador de comparacoes a zero
-    val a1 = intArrayOf(10, 9, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+//    val a1 = intArrayOf(10, 9, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+    val a1 = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
+
     sort(a1, 0, a1.size - 1)
     for (i in a1.indices)
         print(a1[i].toString() + " ")
