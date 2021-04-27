@@ -1,7 +1,7 @@
 package aula16
 
 /*
-From Chapter 17: Interfaces,  Kotlin Apprentice (Second Edition) Beginning Programming with Kotlin by Irina Galata, Joe Howard, Ellen Shapiro
+From Chapter 17: Interfaces, Kotlin Apprentice (Second Edition) Beginning Programming with Kotlin by Irina Galata, Joe Howard, Ellen Shapiro
 
 You’ve learned about two Kotlin custom types: Classes and objects. There’s another
 custom type that’s quite useful: Interfaces.
@@ -50,7 +50,7 @@ interface OptionalDirectionalVehicle {
     fun turn(direction: Direction = Direction.LEFT)
 }
 
-class VehicleOptionalDirection: Vehicle, OptionalDirectionalVehicle {
+class VehicleOptionalDirection : Vehicle, OptionalDirectionalVehicle {
     override fun accelerate() {
         println("accelerate!")
     }
@@ -77,13 +77,19 @@ class LightFreighter: SpaceVehicle {
     override fun accelerate() {
         println("Proceed to hyperspace!")
     }
+    // Method stop is not overridden because it has a default implementation
+    //
+    // But, we could override it, if we want
+//    override fun stop() {
+//        println("Override stop")
+//    }
 }
 
 // Properties in interfaces
 // You can also define properties in an interface:
 interface VehicleProperties {
     val weight: Int // abstract
-    val name: String   // Getter property
+    val name: String  // Getter property
         get() = "Vehicle"
 }
 
@@ -144,39 +150,70 @@ class Boat: SizedVehicle, Comparable<Boat> {
 //println(titanic > qe2) // > false
 
 
+class MotorBike : Vehicle {
+    override fun accelerate() {
+        println("Running by bike!")
+    }
+    override fun stop() {
+        println("Stopping my bike")
+    }
+}
+
 
 fun main() {
     // The big difference you’ll notice is
     //that the interface doesn’t have to contain any implementation.
     //That means you can’t instantiate a Vehicle directly:
-    // val vehicle = Vehicle() // Error
+//    val vehicle = Vehicle() // Error
 
 //    val unicycle: Unicycle = Unicycle() // OK
-    val unicycle: Vehicle = Unicycle() // Also OK, an unicycle is a Vehicle also
+//    val unicycle: Vehicle = Unicycle() // Also OK, an unicycle is a Vehicle also
 
-    unicycle.accelerate()
-    unicycle.stop()
+//    unicycle.accelerate()
+//    unicycle.stop()
+
+//    // Advantages of using interfaces
+//    // GTA - Grand Theft Auto
+//    var gtaVehicle: Vehicle
+//    gtaVehicle = Unicycle() // Set to Unicycle
+//    gtaVehicle.accelerate()
+//    gtaVehicle.stop()
+//    // Player gets a motorbike
+//    gtaVehicle = MotorBike() // Set to MotorBike
+//    gtaVehicle.accelerate()
+//    gtaVehicle.stop()
+
     //////////////////////////////////////////
 
-    val car = VehicleOptionalDirection()
-    car.turn() // > LEFT
-    car.turn(Direction.RIGHT) // > RIGHT
+//    val car = VehicleOptionalDirection()
+//    car.turn() // > LEFT
+//    car.turn(Direction.RIGHT) // > RIGHT
 
     //////////////////////////////////////////
     // Default method implementations
 
-    val falcon = LightFreighter()
-    falcon.accelerate() // > Proceed to hyperspace!
-    falcon.stop() // > "Whoa, slow down!
+//    val falcon = LightFreighter()
+//    falcon.accelerate() // > Proceed to hyperspace!
+//    falcon.stop() // > "Whoa, slow down!"    or  "Override stop"
+//
 
-    //////////////////////////////////////////
+    var myVehicleProperties: VehicleProperties
 
-    val titanic = Boat()
-    titanic.length = 883
-    val qe2 = Boat()
-    qe2.length = 963
-    println(titanic > qe2) // > false
+    myVehicleProperties = Car()
+    println(myVehicleProperties.name)
+    println(myVehicleProperties.weight)
 
+    myVehicleProperties = Tank()
+    println(myVehicleProperties.name)
+    println(myVehicleProperties.weight)
+
+//    //////////////////////////////////////////
+//
+//    val titanic = Boat()
+//    titanic.length = 883
+//    val qe2 = Boat()
+//    qe2.length = 963
+//    println(titanic > qe2) // > false
 }
 
 

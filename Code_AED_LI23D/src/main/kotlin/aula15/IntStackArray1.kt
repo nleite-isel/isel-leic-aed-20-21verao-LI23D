@@ -12,7 +12,8 @@ package aula15
 //}
 
 // AGORA:
-class IntStackArray1(capacity: Int) { // Parametros do construtor
+//class IntStackArray1(capacity: Int) { // Parametros do construtor primário (construtor primário é opcional)
+class IntStackArray1 constructor (capacity: Int) { // Parametros do construtor primário (construtor primário é opcional)
     // Campos ou atributos
     ///*private*/ val stack: IntArray = IntArray(capacity)
     /*private*/ val stack: IntArray
@@ -34,11 +35,13 @@ class IntStackArray1(capacity: Int) { // Parametros do construtor
         return stack[n]
     }
 
-    // Constructor
+    // Constructor primário
     init {
         stack = IntArray(capacity)
         n = 0
     }
+    // Outros construtores (secundários) usam a keyword constructor
+    //...
 }
 
 

@@ -2,7 +2,7 @@ package aula15
 
 
 // OUTRA IMPLEMENTACAO
-class IntStackArray2 {
+class IntStackArray2 { // Sem constructor primário
     // Fields
     private val stack: IntArray
     private var n: Int
