@@ -1,5 +1,7 @@
 package aula16
 
+import kotlin.Comparator
+
 /*
 From Chapter 17: Interfaces, Kotlin Apprentice (Second Edition) Beginning Programming with Kotlin by Irina Galata, Joe Howard, Ellen Shapiro
 
@@ -115,6 +117,7 @@ class Tank: VehicleProperties {
 
 //////////////////////////////////////////
 
+
 // Comparable
 // Comparable declares an operator function used to compare an instance to other
 // instances.
@@ -131,23 +134,61 @@ interface SizedVehicle {
 // You can make Boat implement SizedVehicle and also conform to Comparable :
 class Boat: SizedVehicle, Comparable<Boat> {
     override var length: Int = 0
+
     override fun compareTo(other: Boat): Int {
         return when {
-            length > other.length -> 1
+            this.length > other.length -> 1
             length == other.length -> 0
             else -> -1
         }
+        // Equivalent to
+//        return this.length.compareTo(other.length)
+        // If we want to order in the reversed order
+//        return -this.length.compareTo(other.length)
+    }
+
+    override fun toString(): String {
+        return length.toString()
+    }
+
+}
+
+// Reversed order
+//class Boat: SizedVehicle, Comparable<Boat> {
+//    override var length: Int = 0
+//
+//    override fun compareTo(other: Boat): Int {
+//        return -this.length.compareTo(other.length)
+//    }
+//}
+
+//public interface Comparator<in T> {
+//    public fun compare(elem1: T, elem2: T): Int
+//}
+
+class BoatComparator: Comparator<Boat> {
+    override fun compare(elem1: Boat, elem2: Boat): Int {
+        return when {
+            elem1.length > elem2.length -> 1
+            elem1.length == elem2.length -> 0
+            else -> -1
+        }
+        // Equivalent to
+//        return elem1.length.compareTo(elem2.length)
     }
 }
 
-// The implementation of compareTo returns an Int indicating the relative size of two
-// boats based on their lengths.
-// You can then compare the sizes of two boats using operators such as >:
-//val titanic = Boat()
-//titanic.length = 883
-//val qe2 = Boat()
-//qe2.length = 963
-//println(titanic > qe2) // > false
+class BoatComparatorReversedOrder: Comparator<Boat> {
+    override fun compare(elem1: Boat, elem2: Boat): Int {
+        return when {
+            elem1.length > elem2.length -> -1
+            elem1.length == elem2.length -> 0
+            else -> 1
+        }
+        // Equivalent to
+//        return -elem1.length.compareTo(elem2.length)
+    }
+}
 
 
 class MotorBike : Vehicle {
@@ -197,23 +238,44 @@ fun main() {
 //    falcon.stop() // > "Whoa, slow down!"    or  "Override stop"
 //
 
-    var myVehicleProperties: VehicleProperties
-
-    myVehicleProperties = Car()
-    println(myVehicleProperties.name)
-    println(myVehicleProperties.weight)
-
-    myVehicleProperties = Tank()
-    println(myVehicleProperties.name)
-    println(myVehicleProperties.weight)
-
-//    //////////////////////////////////////////
+//    var myVehicleProperties: VehicleProperties
 //
-//    val titanic = Boat()
-//    titanic.length = 883
-//    val qe2 = Boat()
-//    qe2.length = 963
+//    myVehicleProperties = Car()
+//    println(myVehicleProperties.name)
+//    println(myVehicleProperties.weight)
+//
+//    myVehicleProperties = Tank()
+//    println(myVehicleProperties.name)
+//    println(myVehicleProperties.weight)
+
+    //////////////////////////////////////////
+
+    val titanic = Boat()
+    titanic.length = 883
+    val qe2 = Boat()
+    qe2.length = 963
 //    println(titanic > qe2) // > false
+//    println(titanic.compareTo(qe2)) // > -1
+
+    // If we exchange order inside compareTo (reversed order):
+//    println(titanic > qe2) // > true
+//    println(titanic.compareTo(qe2)) // > 1
+
+    val cmp = BoatComparator()
+    println(cmp.compare(titanic, qe2))
+
+    val cmpReversed = BoatComparatorReversedOrder()
+    println(cmpReversed.compare(titanic, qe2))
+
+    val array: Array<Boat> = Array<Boat>(2, { i -> Boat() })
+    array[0] = titanic
+    array[1] = qe2
+
+    println(array.asList())
+
+    array.sortWith(cmpReversed) // Sorts in decreasing order
+    println(array.asList())
+
 }
 
 
