@@ -12,17 +12,21 @@ class GraphAdjacencyMatrixImpl(override val numVertices: Int, override val isDir
     override fun insert(e: Edge?) {
         val v = e!!.v
         val w = e.w
-        if (adj[v][w] == false) numEdges++
+        if (adj[v][w] == false)
+            numEdges++
         adj[v][w] = true
-        if (!isDirected) adj[w][v] = true
+        if (!isDirected)
+            adj[w][v] = true
     }
 
     override fun remove(e: Edge?) {
         val v = e!!.v
         val w = e.w
-        if (adj[v][w] == true) numEdges--
+        if (adj[v][w] == true)
+            numEdges--
         adj[v][w] = false
-        if (!isDirected) adj[w][v] = false
+        if (!isDirected)
+            adj[w][v] = false
     }
 
     override fun existsEdge(v: Int, w: Int): Boolean {
@@ -42,15 +46,16 @@ class GraphAdjacencyMatrixImpl(override val numVertices: Int, override val isDir
 
         override fun next(): Int {
             i++
-            while (i < v) {
-                if (existsEdge(v, i) == true) return i
+            while (i < numVertices) {
+                if (existsEdge(v, i) == true)
+                    return i
                 i++
             }
             return -1
         }
 
         override fun end(): Boolean {
-            return i >= v
+            return i >= numVertices
         }
 
         init {

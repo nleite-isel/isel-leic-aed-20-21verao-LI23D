@@ -16,7 +16,8 @@ class GraphDFSc(private val graph: Graph, v: Int) {
         val adjList = graph.getAdjList(v)
         var t = adjList!!.begin()
         while (!adjList.end()) {
-            if (!visited[t]) searchC(t)
+            if (!visited[t])
+                searchC(t)
             t = adjList.next()
         }
     }

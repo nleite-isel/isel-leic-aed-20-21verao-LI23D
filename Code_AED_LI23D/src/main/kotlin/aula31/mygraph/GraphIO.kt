@@ -46,45 +46,82 @@ object GraphIO {
         val graph: Graph = GraphAdjacencyMatrixImpl(numVertices, false)
 
         // Add edges
-        graph.insert(Edge(0, 5))
-        graph.insert(Edge(4, 3))
-        graph.insert(Edge(0, 1))
-        graph.insert(Edge(9, 12))
-        graph.insert(Edge(6, 4))
-        graph.insert(Edge(5, 4))
         graph.insert(Edge(0, 2))
-        graph.insert(Edge(11, 12))
-        graph.insert(Edge(9, 10))
-        graph.insert(Edge(0, 6))
-        graph.insert(Edge(7, 8))
-        graph.insert(Edge(9, 11))
-        graph.insert(Edge(5, 3))
+        graph.insert(Edge(0, 5))
+        graph.insert(Edge(0, 7))
+        graph.insert(Edge(2, 6))
+        graph.insert(Edge(6, 4))
+        graph.insert(Edge(4, 3))
+        graph.insert(Edge(4, 5))
+        graph.insert(Edge(4, 7))
+        graph.insert(Edge(7, 1))
+
+//        // Add edges
+//        graph.insert(Edge(0, 5))
+//        graph.insert(Edge(4, 3))
+//        graph.insert(Edge(0, 1))
+//        graph.insert(Edge(9, 12))
+//        graph.insert(Edge(6, 4))
+//        graph.insert(Edge(5, 4))
+//        graph.insert(Edge(0, 2))
+//        graph.insert(Edge(11, 12))
+//        graph.insert(Edge(9, 10))
+//        graph.insert(Edge(0, 6))
+//        graph.insert(Edge(7, 8))
+//        graph.insert(Edge(9, 11))
+//        graph.insert(Edge(5, 3))
         show(graph)
         print(graph.numEdges.toString() + " edges ")
         println("\nPerform DFS on a connected graph:")
         // Perform DFS on a connected graph. Only performs DFS on subgraph starting at vertice 0.
         val dfSc = GraphDFSc(graph, 0)
         //////////////////////////////////////////////////////////////////////////////
-        println("\nBFS Example:")
-        val numVertices1 = 8
-        val graph1: Graph = GraphAdjacencyMatrixImpl(numVertices1, false)
-
-        // Add edges
-        graph1.insert(Edge(0, 2))
-        graph1.insert(Edge(0, 5))
-        graph1.insert(Edge(0, 7))
-        graph1.insert(Edge(2, 6))
-        graph1.insert(Edge(6, 4))
-        graph1.insert(Edge(7, 1))
-        graph1.insert(Edge(5, 3))
-        graph1.insert(Edge(5, 4))
-        graph1.insert(Edge(4, 3))
-        graph1.insert(Edge(4, 7))
-        show(graph1)
-        print(graph1.numEdges.toString() + " edges ")
-        println("\nPerform BFS on a connected graph:")
-        // Perform BFS on a connected graph. Only performs BFS on subgraph starting at vertice 0.
-        val bfSc = GraphBFSc(graph1, 0)
+//        println("\nBFS Example:")
+//        val numVertices1 = 8
+//        val graph1: Graph = GraphAdjacencyMatrixImpl(numVertices1, false)
+//
+//        // Add edges
+//        graph1.insert(Edge(0, 2))
+//        graph1.insert(Edge(0, 5))
+//        graph1.insert(Edge(0, 7))
+//        graph1.insert(Edge(2, 6))
+//        graph1.insert(Edge(6, 4))
+//        graph1.insert(Edge(7, 1))
+//        graph1.insert(Edge(5, 3))
+//        graph1.insert(Edge(5, 4))
+//        graph1.insert(Edge(4, 3))
+//        graph1.insert(Edge(4, 7))
+//        show(graph1)
+//        print(graph1.numEdges.toString() + " edges ")
+//        println("\nPerform BFS on a connected graph:")
+//        // Perform BFS on a connected graph. Only performs BFS on subgraph starting at vertice 0.
+//        val bfSc = GraphBFSc(graph1, 0)
         //////////////////////////////////////////////////////////////////////////////
     }
 }
+
+
+//fun main() {
+//    println("\nSlides Example:")
+//    val numVertices = 13
+//    val graph: Graph = GraphAdjacencyMatrixImpl(numVertices, false)
+////        Graph graph = new GraphAdjacencyListImpl(numVertices, false);
+//
+//    // Add edges
+//    graph.insert(Edge(0, 1))
+//    graph.insert(Edge(0, 2))
+//    graph.insert(Edge(0, 5))
+//    graph.insert(Edge(0, 6))
+//
+//    GraphIO.show(graph)
+//    print(graph.numEdges.toString() + " edges ")
+//}
+
+
+
+
+
+
+
+
+

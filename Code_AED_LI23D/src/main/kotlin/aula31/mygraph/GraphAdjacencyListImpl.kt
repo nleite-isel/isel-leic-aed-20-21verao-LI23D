@@ -16,7 +16,8 @@ class GraphAdjacencyListImpl(override val numVertices: Int, override val isDirec
         val v = e!!.v
         val w = e.w
         adj[v] = Node(w, adj[v]!!)
-        if (!isDirected) adj[w] = Node(v, adj[w]!!)
+        if (!isDirected)
+            adj[w] = Node(v, adj[w]!!)
         numEdges++
     }
 
@@ -44,7 +45,8 @@ class GraphAdjacencyListImpl(override val numVertices: Int, override val isDirec
         }
 
         override fun next(): Int {
-            if (t != null) t = t!!.next
+            if (t != null)
+                t = t!!.next
             return if (t == null) -1 else t!!.v
         }
 
