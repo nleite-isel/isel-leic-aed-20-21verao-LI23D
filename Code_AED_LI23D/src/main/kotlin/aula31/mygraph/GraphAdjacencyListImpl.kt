@@ -9,15 +9,15 @@ class GraphAdjacencyListImpl(override val numVertices: Int, override val isDirec
     override var numEdges = 0
         private set
 
-    private inner class Node internal constructor(var v: Int, var next: Node)
+    private inner class Node internal constructor(var v: Int, var next: Node?)
 
     private val adj: Array<Node?>
     override fun insert(e: Edge?) {
         val v = e!!.v
         val w = e.w
-        adj[v] = Node(w, adj[v]!!)
+        adj[v] = Node(w, if (adj[v] == null) null else adj[v])
         if (!isDirected)
-            adj[w] = Node(v, adj[w]!!)
+            adj[w] = Node(v, if (adj[w] == null) null else adj[w])
         numEdges++
     }
 

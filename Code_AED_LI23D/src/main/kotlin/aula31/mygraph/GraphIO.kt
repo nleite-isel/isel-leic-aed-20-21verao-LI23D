@@ -23,18 +23,18 @@ object GraphIO {
     fun show(graph: Graph) {
         for (s in 0 until graph.numVertices) {
             print("$s: ")
-            val A = graph.getAdjList(s)
-            var t = A!!.begin()
-            while (!A.end()) {
+            val adjList = graph.getAdjList(s)
+            var t = adjList!!.begin()
+            while (!adjList.end()) {
                 print("$t ")
-                t = A.next()
+                t = adjList.next()
             }
             println()
         }
     }
 
-    @JvmStatic
-    fun main(args: Array<String>) {
+//    @JvmStatic
+ /*   fun main(args: Array<String>) {
         println("\nDFS Example:")
         val numVertices = 13
         ///
@@ -98,24 +98,38 @@ object GraphIO {
 //        val bfSc = GraphBFSc(graph1, 0)
         //////////////////////////////////////////////////////////////////////////////
     }
+    */
+
 }
 
 
-//fun main() {
-//    println("\nSlides Example:")
-//    val numVertices = 13
+fun main() {
+    println("\nSlides Example:")
+    val numVertices = 13
 //    val graph: Graph = GraphAdjacencyMatrixImpl(numVertices, false)
-////        Graph graph = new GraphAdjacencyListImpl(numVertices, false);
-//
-//    // Add edges
-//    graph.insert(Edge(0, 1))
-//    graph.insert(Edge(0, 2))
-//    graph.insert(Edge(0, 5))
-//    graph.insert(Edge(0, 6))
-//
-//    GraphIO.show(graph)
-//    print(graph.numEdges.toString() + " edges ")
-//}
+    val graph: Graph = GraphAdjacencyListImpl(numVertices, false)
+
+    // Add edges
+    graph.insert(Edge(0, 1))
+    graph.insert(Edge(0, 2))
+    graph.insert(Edge(0, 5))
+    graph.insert(Edge(0, 6))
+
+    graph.insert(Edge(5, 3))
+    graph.insert(Edge(5, 4))
+    graph.insert(Edge(3, 4))
+    graph.insert(Edge(6, 4))
+
+    graph.insert(Edge(7, 8))
+
+    graph.insert(Edge(9, 10))
+    graph.insert(Edge(9, 11))
+    graph.insert(Edge(12, 9))
+    graph.insert(Edge(11, 12))
+
+    GraphIO.show(graph)
+    print(graph.numEdges.toString() + " edges ")
+}
 
 
 
